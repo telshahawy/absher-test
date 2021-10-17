@@ -1,0 +1,50 @@
+  stages:
+    - build
+    - release
+  dev_build:
+    stage: build
+    script:
+     - dotnet clean
+     - dotnet restore
+     - dotnet build
+    only:
+      -  development
+    environment:
+        name: development
+  testing_build:
+    stage: build
+    script:
+     - dotnet clean
+     - dotnet restore
+     - dotnet build
+    only:
+      -  testing
+    environment:
+        name: testing
+  dev_release:
+    stage: release
+    only:
+      - development
+    artifacts:
+      paths:
+        - publish/
+    script:
+      - Stop-WebAppPool -Name aidevapi
+      - dotnet publish -c Release -o C:\inetpub\wwwroot\aidevapi.smartwaveeg.com 
+      - Start-WebAppPool -Name aidevapi
+    environment:
+        name: development
+      
+  testing_release:
+    stage: release
+    only:
+      -  testing
+    artifacts:
+      paths:
+        - publish/
+    script:
+      - Stop-WebAppPool -Name aitestapi
+      - dotnet publish -c Release -o C:\inetpub\wwwroot\aitestapi.smartwaveeg.com 
+      - Start-WebAppPool -Name aitestapi
+    environment:
+        name: testing

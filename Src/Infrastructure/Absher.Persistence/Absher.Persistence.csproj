@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Migrations\20210915200746_FirstCreation.cs" />
+    <Compile Include="Migrations\20210915200746_FirstCreation.Designer.cs" />
+    <Compile Include="Migrations\20211014170853_AddChatAndUserEntities.cs" />
+    <Compile Include="Migrations\20211014170853_AddChatAndUserEntities.Designer.cs" />
+    <Compile Include="Migrations\AbsherDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EFCore.BulkExtensions" Version="5.3.7" />
+    <PackageReference Include="EntityFrameworkCore.MemoryJoin" Version="0.7.6" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Absher.Domain\Absher.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\Absher.Interfaces\Absher.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Core\Absher.Utility\Absher.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
